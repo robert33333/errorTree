@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static controller.Controller.*;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("args",args.toString()));
@@ -17,7 +17,7 @@ public class Main {
         d("unu", "doi");
     }
 
-    public static void a(String string) {
+    private static void a(String string) {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("string",string));
         addFunction("main","main",new Function("a",parameters));
@@ -25,14 +25,14 @@ public class Main {
         b(3,4);
     }
 
-    public static void b(int int1, int int2) {
+    private static void b(int int1, int int2) {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("int1",int1));
         parameters.add(new Parameter("int2",int2));
         addFunction("main","a",new Function("b",parameters));
     }
 
-    public static void d(String a, String b) {
+    private static void d(String a, String b) {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("a", a));
         parameters.add(new Parameter("b", b));

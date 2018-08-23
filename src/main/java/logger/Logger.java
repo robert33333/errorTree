@@ -1,8 +1,6 @@
 package logger;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 
 import static data.Errors.LOGGER_INITIALIZE_ERROR;
 
@@ -13,6 +11,18 @@ public class Logger {
 
     private static void initialize() throws Exception {
         printWriter = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath+"/"+logFile, true)));
+    }
+
+    public static void initialize(String fullLogPath) throws Exception {
+        printWriter = new PrintWriter(new BufferedWriter(new FileWriter(fullLogPath, true)));
+    }
+
+    public static void initialize(OutputStream outputStream) {
+        printWriter = new PrintWriter(outputStream);
+    }
+
+    public static void initialize(File file) throws Exception {
+        printWriter = new PrintWriter(file);
     }
 
     public static void log(String message) {
