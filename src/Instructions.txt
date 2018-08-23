@@ -34,3 +34,9 @@ When you need information about previous functions called use method:
 
 Example:
 - Run the main function.
+- You should get something like this:
+
+main(args = [Ljava.lang.String;@7f31245a)
+ a(string = testString)
+  b(int1 = 3,int2 = 4)
+ d(a = unu,b = doi)
