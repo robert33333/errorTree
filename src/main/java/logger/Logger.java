@@ -13,8 +13,8 @@ public class Logger {
         printWriter = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath+"/"+logFile, true)));
     }
 
-    public static void initialize(String fullLogPath) throws Exception {
-        printWriter = new PrintWriter(new BufferedWriter(new FileWriter(fullLogPath, true)));
+    public static void initialize(String fullLogPath, boolean append) throws Exception {
+        printWriter = new PrintWriter(new BufferedWriter(new FileWriter(fullLogPath, append)));
     }
 
     public static void initialize(OutputStream outputStream) {
