@@ -30,4 +30,11 @@ public class Controller {
     public static void printAll(String motherFunction) {
         traces.get(motherFunction).printAll(true);
     }
+
+    public static void endTrace(String motherFunction, boolean printAll) {
+        if (printAll) {
+            traces.get(motherFunction).printAll(false);
+        }
+        traces.remove(motherFunction);
+    }
 }

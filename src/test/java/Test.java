@@ -18,6 +18,8 @@ public class Test {
 
         a();
         d();
+
+        endTrace("main", true);
     }
 
     private static void a() throws Exception {
@@ -40,8 +42,6 @@ public class Test {
         parameters.add(new Parameter("a", "unu"));
         parameters.add(new Parameter("b", "doi"));
         addFunction("main", new Function("d", parameters));
-
-        printAll("main");
     }
 
     @org.junit.Test
