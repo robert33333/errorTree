@@ -36,7 +36,7 @@ When you need information about previous functions called use method:
 "motherFunction" is the name of the root function
 
 Example:
-- Run the main function.
+- Run the test function.
 - You should get something like this:
 
 main(args = [Ljava.lang.String;@7f31245a)
