@@ -39,7 +39,7 @@ Example:
 - Run the test function.
 - You should get something like this:
 
-main(args = [Ljava.lang.String;@7f31245a)
+main(args = Argument)
  a(string = testString)
   b(int1 = 3,int2 = 4)
  d(a = unu,b = doi)
