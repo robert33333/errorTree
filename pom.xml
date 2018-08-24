@@ -28,7 +28,7 @@
 
     <groupId>ro</groupId>
     <artifactId>errorTree</artifactId>
-    <version>0.0.1.Alpha</version>
+    <version>0.0.2</version>
 
     <build>
         <plugins>

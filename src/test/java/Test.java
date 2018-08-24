@@ -11,7 +11,7 @@ import static controller.Controller.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class Test {
-    private static void main() {
+    private static void main() throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("args", "Argument"));
         startTrace(new Function("main", parameters));
@@ -20,26 +20,26 @@ public class Test {
         d();
     }
 
-    private static void a() {
+    private static void a() throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("string", "testString"));
-        addFunction("main", "main", new Function("a", parameters));
+        addFunction("main", new Function("a", parameters));
 
         b();
     }
 
-    private static void b() {
+    private static void b() throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("int1", 3));
         parameters.add(new Parameter("int2", 4));
-        addFunction("main", "a", new Function("b", parameters));
+        addFunction("a", new Function("b", parameters));
     }
 
-    private static void d() {
+    private static void d() throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("a", "unu"));
         parameters.add(new Parameter("b", "doi"));
-        addFunction("main", "main", new Function("d", parameters));
+        addFunction("main", new Function("d", parameters));
 
         printAll("main");
     }

@@ -15,16 +15,18 @@ public class Tree {
         root = new Node(function);
     }
 
-    public void addNode(String parent, Function function) {
+    public boolean addNode(String parent, Function function) {
         try {
             Node node = getNode(root, parent);
             if (node != null) {
                 node.children.add(new Node(function));
+                return true;
             }
         }catch (Exception e) {
             System.out.println(ADD_NODE_ERROR);
             e.printStackTrace();
         }
+        return false;
     }
 
     @org.jetbrains.annotations.Nullable

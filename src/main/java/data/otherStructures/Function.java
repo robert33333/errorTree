@@ -1,21 +1,21 @@
 package data.otherStructures;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Function {
     private final String name;
-    private final List<Parameter> parameterList;
+    private final ArrayList<Parameter> parameterList;
 
     public String getName() {
         return name;
     }
 
-    public List<Parameter> getParameterList() {
-        return parameterList;
-    }
-
-    public Function(String name, List<Parameter> parameterList) {
+    public Function(String name, ArrayList<Parameter> parameterList) {
         this.name = name;
         this.parameterList = parameterList;
+    }
+
+    public ArrayList<Parameter> getParameterList() {
+        return parameterList;
     }
 }
