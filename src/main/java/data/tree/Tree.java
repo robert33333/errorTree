@@ -78,6 +78,8 @@ public class Tree {
     }
 
     private String getStringRepresentation(Object o) {
+        if (o == null)
+            o = "NULL";
         switch (o.getClass().getName()) {
             case "java.lang.String":
                 return '\"' + o.toString() + '\"';
