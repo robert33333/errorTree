@@ -26,14 +26,18 @@ You need to create a Function object using your function data
 You can have more root functions
 
 When in a child function call method:
-- Controller.addFunction(String motherFunction, String parentFunction, Function function)
-"motherFunction" is the name of the root function
+- Controller.addFunction(String parentFunction, Function function)
 "parentFunction" is the name of the function that called the current function
 You need to create a Function object using your function data
 
 When you need information about previous functions called use method:
 - Controller.printAll(String motherFunction)
 "motherFunction" is the name of the root function
+
+When you want to end a function call method:
+- Controller.endTrace(String motherFunction,boolean printAll)
+"motherFunction" is the name of the root function
+"printAll" determines if the tree of functions is printed or not
 
 Example:
 - Run the test function.
