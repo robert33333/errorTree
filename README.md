@@ -37,9 +37,3 @@ When you need information about previous functions called use method:
 
 Example:
 - Run the test function.
-- You should get something like this:
-
-main(args = Argument)
- a(string = testString)
-  b(int1 = 3,int2 = 4)
- d(a = unu,b = doi)
