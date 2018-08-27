@@ -50,10 +50,14 @@ public class Test {
             Logger.initialize("testLogFile", false);
             main();
             String text = new String(Files.readAllBytes(Paths.get("testLogFile")), StandardCharsets.UTF_8);
-            assertEquals(text, "main(args = Argument)\n" +
-                    " a(string = testString)\n" +
-                    "  b(int1 = 3,int2 = 4)\n" +
-                    " d(a = unu,b = doi)\n");
+            assertEquals(text, "|-> main( args = \"Argument\" )\n" +
+                    "\n" +
+                    "    |-> a( string = \"testString\" )\n" +
+                    "\n" +
+                    "        |-> b( int1 = 3, int2 = 4 )\n" +
+                    "\n" +
+                    "    |-> d( a = \"unu\", b = \"doi\" )\n" +
+                    "\n");
 
         } catch (Exception e) {
             e.printStackTrace();

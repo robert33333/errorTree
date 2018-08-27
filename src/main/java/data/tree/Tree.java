@@ -57,21 +57,32 @@ public class Tree {
     private void printRecursive(Node node, int level) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i=0; i<level; ++i) {
-            stringBuilder.append(' ');
+            stringBuilder.append("    ");
         }
+        stringBuilder.append("|-> ");
         stringBuilder.append(node.function.getName());
         if (!node.function.getParameterList().isEmpty()) {
-            stringBuilder.append('(');
+            stringBuilder.append("( ");
             for (Parameter parameter : node.function.getParameterList()) {
-                stringBuilder.append(parameter.getName()).append(" = ").append(parameter.getValue()).append(",");
+                stringBuilder.append(parameter.getName()).append(" = ").append(getStringRepresentation(parameter.getValue())).append(", ");
             }
-            stringBuilder.deleteCharAt(stringBuilder.length()-1);
+            int length = stringBuilder.length();
+            stringBuilder.delete(length - 2, length - 1);
             stringBuilder.append(')');
         }
-        log(stringBuilder.toString());
+        log(stringBuilder.append('\n').toString());
 
         for (Node node1 : node.children) {
             printRecursive(node1,level+1);
+        }
+    }
+
+    private String getStringRepresentation(Object o) {
+        switch (o.getClass().getName()) {
+            case "java.lang.String":
+                return '\"' + o.toString() + '\"';
+            default:
+                return o.toString();
         }
     }
 
