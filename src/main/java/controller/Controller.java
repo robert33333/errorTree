@@ -6,6 +6,7 @@ import logger.Logger;
 
 import static data.Data.traces;
 import static data.Errors.*;
+import static data.tree.Tree.getMotherFunction;
 
 public class Controller {
     public static void startTrace(Function function) {
@@ -32,9 +33,9 @@ public class Controller {
         traces.get(motherFunction).printAll(true);
     }
 
-    public static void printException(String motherFunction, Exception exception) {
+    public static void printException(String parentFunction, Exception exception) {
         try {
-            traces.get(motherFunction).printAll(false);
+            traces.get(getMotherFunction(parentFunction)).printAll(false);
             Logger.printException(exception);
         } catch (Exception e) {
             e.printStackTrace();

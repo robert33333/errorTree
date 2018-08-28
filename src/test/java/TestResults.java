@@ -12,6 +12,8 @@ class TestResults {
             "\n" +
             "    |-> a( string = \"testString\" )\n" +
             "\n" +
+            "        |-> b( int1 = 3, int2 = 4 )\n" +
+            "\n" +
             "java.lang.NullPointerException \n" +
             "cause: null\n" +
             "message: Something went wrong!\n" +

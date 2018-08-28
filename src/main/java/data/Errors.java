@@ -7,4 +7,5 @@ public class Errors {
     public static final String LOGGER_INITIALIZE_ERROR = "Could not initialize logger!";
     public static final String START_TRACE_ERROR = "Could not start trace!";
     public static final String END_TRACE_ERROR = "Some exception occurred in end trace!";
+    public static final String NODE_NOT_FOUND_ERROR = "Node not found!";
 }

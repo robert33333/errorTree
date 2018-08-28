@@ -4,8 +4,7 @@ import data.otherStructures.Function;
 import data.otherStructures.Parameter;
 
 import static data.Data.traces;
-import static data.Errors.ADD_NODE_ERROR;
-import static data.Errors.PARENT_NOT_FOUND;
+import static data.Errors.*;
 import static logger.Logger.log;
 
 public class Tree {
@@ -13,6 +12,15 @@ public class Tree {
 
     public Tree(Function function) {
         root = new Node(function);
+    }
+
+    public static String getMotherFunction(String childFunction) {
+        for (String treeKey : traces.keySet()) {
+            Tree tree = traces.get(treeKey);
+            if (tree.getNode(tree.root, childFunction) != null)
+                return tree.root.function.getName();
+        }
+        return NODE_NOT_FOUND_ERROR;
     }
 
     public boolean addNode(String parent, Function function) {

@@ -2,6 +2,8 @@
 
     |-> a( string = "testString" )
 
+        |-> b( int1 = 3, int2 = 4 )
+
 java.lang.NullPointerException 
 cause: null
 message: Something went wrong!

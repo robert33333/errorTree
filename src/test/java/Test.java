@@ -32,14 +32,13 @@ public class Test {
     }
 
     private static void b(boolean testException) throws Exception {
-        if (testException) {
-            printException("main", new NullPointerException(GENERIC_ERROR));
-            return;
-        }
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("int1", 3));
         parameters.add(new Parameter("int2", 4));
         addFunction("a", new Function("b", parameters));
+        if (testException) {
+            printException("b", new NullPointerException(GENERIC_ERROR));
+        }
     }
 
     private static void d() throws Exception {
