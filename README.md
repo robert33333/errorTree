@@ -30,9 +30,15 @@ When in a child function call method:
 "parentFunction" is the name of the function that called the current function
 You need to create a Function object using your function data
 
+@Deprecated
 When you need information about previous functions called use method:
 - Controller.printAll(String motherFunction)
 "motherFunction" is the name of the root function
+
+When you catch an exception you can print the error tree using method:
+- Controller.printException(String parentFunction, Exception exception)
+"parentFunction" is the name of the function where you caught the exception
+"exception" is the exception you caught
 
 When you want to end a function call method:
 - Controller.endTrace(String motherFunction,boolean printAll)
