@@ -38,4 +38,13 @@ public class Logger {
         printWriter.println(message);
         printWriter.flush();
     }
+
+    public static void printException(Exception e) {
+        if (e == null)
+            return;
+        printWriter.println(e.getClass().getName() + " \ncause: " + e.getCause()
+                + "\nmessage: " + e.getMessage());
+        printWriter.println();
+        printWriter.flush();
+    }
 }

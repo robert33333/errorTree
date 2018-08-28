@@ -2,10 +2,10 @@ package controller;
 
 import data.otherStructures.Function;
 import data.tree.Tree;
+import logger.Logger;
 
 import static data.Data.traces;
-import static data.Errors.ADD_NODE_ERROR;
-import static data.Errors.START_TRACE_ERROR;
+import static data.Errors.*;
 
 public class Controller {
     public static void startTrace(Function function) {
@@ -27,14 +27,27 @@ public class Controller {
         throw new Exception(ADD_NODE_ERROR);
     }
 
+    @Deprecated
     public static void printAll(String motherFunction) {
         traces.get(motherFunction).printAll(true);
     }
 
-    public static void endTrace(String motherFunction, boolean printAll) {
-        if (printAll) {
+    public static void printException(String motherFunction, Exception exception) {
+        try {
             traces.get(motherFunction).printAll(false);
+            Logger.printException(exception);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        traces.remove(motherFunction);
+    }
+
+    public static void endTrace(String motherFunction, boolean printAll) {
+        try {
+            if (printAll) {
+                traces.get(motherFunction).printAll(false);
+            }
+        } catch (Exception e) {
+            System.out.println(END_TRACE_ERROR);
+        }
     }
 }

@@ -8,29 +8,34 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static controller.Controller.*;
+import static data.Errors.GENERIC_ERROR;
 import static junit.framework.TestCase.assertEquals;
 
 public class Test {
-    private static void main() throws Exception {
+    private static void main(boolean testException, boolean printAll) throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("args", "Argument"));
         startTrace(new Function("main", parameters));
 
-        a();
+        a(testException);
         d();
 
-        endTrace("main", true);
+        endTrace("main", printAll);
     }
 
-    private static void a() throws Exception {
+    private static void a(boolean testException) throws Exception {
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("string", "testString"));
         addFunction("main", new Function("a", parameters));
 
-        b();
+        b(testException);
     }
 
-    private static void b() throws Exception {
+    private static void b(boolean testException) throws Exception {
+        if (testException) {
+            printException("main", new NullPointerException(GENERIC_ERROR));
+            return;
+        }
         ArrayList<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter("int1", 3));
         parameters.add(new Parameter("int2", 4));
@@ -48,19 +53,26 @@ public class Test {
     public void test1() {
         try {
             Logger.initialize("testLogFile", false);
-            main();
+            main(false, true);
             String text = new String(Files.readAllBytes(Paths.get("testLogFile")), StandardCharsets.UTF_8);
-            assertEquals(text, "|-> main( args = \"Argument\" )\n" +
-                    "\n" +
-                    "    |-> a( string = \"testString\" )\n" +
-                    "\n" +
-                    "        |-> b( int1 = 3, int2 = 4 )\n" +
-                    "\n" +
-                    "    |-> d( a = \"unu\", b = \"doi\" )\n" +
-                    "\n");
+            assertEquals(text, TestResults.result1);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    @org.junit.Test
+    public void test2() {
+        try {
+            Logger.initialize("testLogFile", false);
+            main(true, false);
+            String text = new String(Files.readAllBytes(Paths.get("testLogFile")), StandardCharsets.UTF_8);
+            assertEquals(text, TestResults.result2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

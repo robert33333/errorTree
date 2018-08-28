@@ -2,7 +2,7 @@
 
     |-> a( string = "testString" )
 
-        |-> b( int1 = 3, int2 = 4 )
-
-    |-> d( a = "unu", b = "doi" )
+java.lang.NullPointerException 
+cause: null
+message: Something went wrong!
 
