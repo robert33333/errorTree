@@ -1,5 +1,10 @@
 package data;
 
+/**
+ * contains the type of errors that can occur
+ *
+ * @author Robert
+ */
 public class Errors {
     public static final String GENERIC_ERROR = "Something went wrong!";
     public static final String PARENT_NOT_FOUND = "Could not find the parent node!";

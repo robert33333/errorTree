@@ -7,13 +7,31 @@ import static data.Data.traces;
 import static data.Errors.*;
 import static logger.Logger.log;
 
+/**
+ * Represents a tree like data structure
+ *
+ * @author Robert
+ */
 public class Tree {
+    /**
+     * root of the tree
+     * represents the starting function in the trace tree
+     */
     private final Node root;
 
+    /**
+     * Constructor
+     * @param function root node; represents the starting function in the trace tree
+     */
     public Tree(Function function) {
         root = new Node(function);
     }
 
+    /**
+     * gets the the name of the function in the root node of the tree
+     * @param childFunction name of a function that represents a child of the tree
+     * @return name of the function in the root of the tree if find or an error
+     */
     public static String getMotherFunction(String childFunction) {
         for (String treeKey : traces.keySet()) {
             Tree tree = traces.get(treeKey);
@@ -23,6 +41,12 @@ public class Tree {
         return NODE_NOT_FOUND_ERROR;
     }
 
+    /**
+     * adds a node to a trace tree
+     * @param parent the node who will become the parent of the new node
+     * @param function details about a function called in the trace tree
+     * @return true if the node was added successfully, false otherwise
+     */
     public boolean addNode(String parent, Function function) {
         try {
             Node node = getNode(root, parent);
@@ -37,6 +61,12 @@ public class Tree {
         return false;
     }
 
+    /**
+     * searches for a node recursively until find one with a function that matches the required function name
+     * @param node the node that is currently being processed
+     * @param parent the node that is being searched for
+     * @return node object or null if node was  not find
+     */
     @org.jetbrains.annotations.Nullable
     private Node getNode(Node node, String parent) {
         try {
@@ -55,6 +85,10 @@ public class Tree {
         return null;
     }
 
+    /**
+     * prints the whole trace tree
+     * @param removeTree if true, the trace tree will be removed upon printing
+     */
     public void printAll(boolean removeTree) {
         printRecursive(root,0);
         if (removeTree) {
@@ -62,9 +96,14 @@ public class Tree {
         }
     }
 
+    /**
+     * prints the whole trace tree recursively
+     * @param node the node that is currently being processed
+     * @param level how deep the recursion has went down the tree
+     */
     private void printRecursive(Node node, int level) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i=0; i<level; ++i) {
+        for (int i = 0; i<level; ++i) {
             stringBuilder.append("    ");
         }
         stringBuilder.append("|-> ");
@@ -85,6 +124,11 @@ public class Tree {
         }
     }
 
+    /**
+     * specifies how a particular object will be printed in the log file
+     * @param o object processed
+     * @return string representation of the object
+     */
     private String getStringRepresentation(Object o) {
         if (o == null)
             o = "NULL";
@@ -96,6 +140,9 @@ public class Tree {
         }
     }
 
+    /**
+     * removes trace tree from the list of trace trees
+     */
     private void removeTree() {
         traces.remove(root.function.getName());
     }
